@@ -22,7 +22,6 @@ const LoginForm = ({ formData, handleFormChange, handleSubmit, errors }) => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "200px",
       }}
     >
       <form

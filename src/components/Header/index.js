@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 
@@ -6,6 +6,7 @@ import { authSelector } from "../../pages/login/selectors";
 import { NAVIGATION } from "./config";
 import { Button } from "@mui/material";
 import AuthService from "../../services/AuthService";
+import { LoginContainer } from "../../pages/login/containers/LoginContainer";
 
 import { AccountCircle, ShoppingCart } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
@@ -13,6 +14,7 @@ import "./Header.css";
 
 const Header = () => {
   const { isAuth } = useSelector(authSelector);
+
   const navigationItems = useMemo(() => {
     const targetNavigationItems = isAuth ? "PRIVATE" : "PUBLIC";
 
@@ -62,13 +64,12 @@ const Header = () => {
               </IconButton>
             </div>
           ) : (
-            navigationItems.map(({ title, path }) => (
-              <div className="header__wrapper-buttons">
-                <Button key={title} variant="outlined">
-                  <NavLink to={path}>{title}</NavLink>
-                </Button>
-              </div>
-            ))
+            <>
+              <LoginContainer />
+              <Button key="Sign Up" variant="outlined">
+                <NavLink to="../signup">Sign up</NavLink>
+              </Button>
+            </>
           )}
         </div>
       </div>

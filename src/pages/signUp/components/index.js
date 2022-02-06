@@ -23,6 +23,7 @@ const SignUpForm = ({
   handleFormChange,
   handleSubmit,
   errors,
+  handleLogIn,
   success,
 }) => {
   const [inputType, setInputType] = useState("password");
@@ -42,10 +43,9 @@ const SignUpForm = ({
       </Typography>
       <p className="account">
         Already have an account?{" "}
-        <a className="LogInLink" href={ROUTE_NAMES.LOGIN}>
+        <a className="LogInLink" onClick={handleLogIn}>
           Log in
         </a>
-        {/* <NavLink to={ROUTE_NAMES.LOGIN}>Log in</NavLink> */}
       </p>
       <form className="form" onSubmit={handleSubmit}>
         <TextField

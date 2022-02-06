@@ -1,16 +1,19 @@
-import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from "redux";
+import createSagaMiddleware from "redux-saga";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-import rootSaga from './rootSaga';
-import rootReducer from './rootReducer';
-import { LOCAL_STORAGE_KEYS } from '../constants/localStorageKeys';
+import rootSaga from "./rootSaga";
+import rootReducer from "./rootReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
 export function configureStore() {
-    const store = createStore(rootReducer, {auth: {isAuth: localStorage.getItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN)}}, composeWithDevTools(applyMiddleware(...[sagaMiddleware])));
+  const store = createStore(
+    rootReducer,
+    {},
+    composeWithDevTools(applyMiddleware(...[sagaMiddleware]))
+  );
 
-    sagaMiddleware.run(rootSaga);
-    return store;
+  sagaMiddleware.run(rootSaga);
+  return store;
 }

@@ -1,1 +1,1 @@
-export const registerSelector = (state) => state.auth;
+export const registerSelector = (state) => state.signUp;

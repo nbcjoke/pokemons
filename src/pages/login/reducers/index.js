@@ -1,38 +1,50 @@
-import * as actions from '../actions';
-import { handleActions } from 'redux-actions';
-import { LOCAL_STORAGE_KEYS } from '../../../constants/localStorageKeys';
+import * as actions from "../actions";
+import { handleActions } from "redux-actions";
+import { LOCAL_STORAGE_KEYS } from "../../../constants/localStorageKeys";
 
 const defaultState = {
-    isLoading: false,
-    error: null,
-    userData: {},
-    isAuth: false,
-    accessToken: null,
+  isLoading: false,
+  error: null,
+  userData: {},
+  isAuth: localStorage.getItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN),
+  accessToken: null,
+  isOpened: false,
 };
 
-export const authReducer = handleActions({
+export const authReducer = handleActions(
+  {
     [actions.SIGN_IN_REQUEST]: (state) => ({
-        ...state,
-        isLoading: true,
-        error: null,
+      ...state,
+      isLoading: true,
+      error: null,
     }),
     [actions.SIGN_IN_SUCCESS]: (state, { payload }) => {
-        console.log(payload)
-        const { accessToken, ...userData } = payload.response;
+      console.log(payload);
+      const { accessToken, ...userData } = payload.response;
 
-        localStorage.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, accessToken);
+      localStorage.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, accessToken);
 
-        return {
-            ...state,
-            isLoading: false,
-            isAuth: true,
-            userData,
-            accessToken,
-        };
-    },
-    [actions.SIGN_IN_FAIL]: (state, { payload }) => ({
+      return {
         ...state,
         isLoading: false,
-        error: payload.response,
+        isAuth: true,
+        userData,
+        accessToken,
+      };
+    },
+    [actions.SIGN_IN_FAIL]: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      error: payload.response,
     }),
-}, defaultState);
+    [actions.OPEN_MODAL]: (state) => ({
+      ...state,
+      isOpened: true,
+    }),
+    [actions.CLOSE_MODAL]: (state) => ({
+      ...state,
+      isOpened: false,
+    }),
+  },
+  defaultState
+);

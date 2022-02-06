@@ -7,8 +7,13 @@ import { SignUpContainer } from "../pages/signUp/containers/SignUpContainer";
 
 import { PrivateRoute } from "./PrivateRoute";
 import { ROUTE_NAMES } from "./routeNames";
+import { setNavigator } from "../services/NavigationService";
+import { useNavigate } from "react-router-dom";
 
 export const Router = () => {
+  const navigate = useNavigate();
+  setNavigator(navigate);
+
   return (
     <Routes>
       <Route path={ROUTE_NAMES.LOGIN} element={<LoginContainer />} />

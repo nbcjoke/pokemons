@@ -10,6 +10,7 @@ import SignUpForm from "../components";
 import { signUpSchema } from "../../../validations/SignUpValidation";
 import { registerSelector } from "../../signUp/selectors";
 import { ROUTE_NAMES } from "../../../routes/routeNames";
+import { OPEN_MODAL } from "../../login/actions";
 
 export const SignUpContainer = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,9 @@ export const SignUpContainer = () => {
   const [errors, setErrors] = useState();
   // const { success } = useSelector(registerSelector);
 
+  const handleLogin = () => {
+    dispatch(OPEN_MODAL());
+  };
   const { formValues, handleChange } = useForm({
     email: "",
     password: "",
@@ -69,6 +73,7 @@ export const SignUpContainer = () => {
       handleSubmit={handleSignUp}
       handleFormChange={handleChange}
       errors={errors}
+      handleLogin={handleLogin}
       // success={success}
     />
   );

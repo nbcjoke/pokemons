@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
-import * as yup from "yup";
 
 import { useForm } from "../../../hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { SIGN_IN_REQUEST } from "../actions";
+import { SIGN_IN_REQUEST, OPEN_MODAL, CLOSE_MODAL } from "../actions";
 import LoginForm from "../components/LoginForm";
 import { loginSchema } from "../../../validations/LoginValidation";
 import { ROUTE_NAMES } from "../../../routes/routeNames";
 import { authSelector } from "../selectors";
+
+import { Button, Dialog, DialogContent, DialogTitle } from "@mui/material";
 
 export const LoginContainer = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,14 @@ export const LoginContainer = () => {
   });
 
   const [errors, setErrors] = useState();
+
+  const handleClickOpen = () => {
+    dispatch(OPEN_MODAL());
+  };
+
+  const handleClose = () => {
+    dispatch(CLOSE_MODAL());
+  };
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -40,7 +49,7 @@ export const LoginContainer = () => {
     }
   };
 
-  const { isAuth } = useSelector(authSelector);
+  const { isAuth, isOpened } = useSelector(authSelector);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,11 +59,21 @@ export const LoginContainer = () => {
   }, [isAuth]);
 
   return (
-    <LoginForm
-      formData={formValues}
-      errors={errors}
-      handleSubmit={handleLogin}
-      handleFormChange={handleChange}
-    />
+    <>
+      <Button key="Log In" variant="outlined" onClick={handleClickOpen}>
+        Log In
+      </Button>
+      <Dialog open={isOpened} onClose={handleClose}>
+        <DialogTitle>Log In</DialogTitle>
+        <DialogContent>
+          <LoginForm
+            formData={formValues}
+            errors={errors}
+            handleSubmit={handleLogin}
+            handleFormChange={handleChange}
+          />
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
