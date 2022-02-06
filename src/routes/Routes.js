@@ -9,19 +9,20 @@ import { PrivateRoute } from "./PrivateRoute";
 import { ROUTE_NAMES } from "./routeNames";
 
 export const Router = () => {
-    return (
-        <Routes>
-            <Route path={ROUTE_NAMES.LOGIN} element={<LoginContainer />} />
-            <Route path={ROUTE_NAMES.SIGNUP} element={<SignUpContainer />} />
-            <Route path={ROUTE_NAMES.POKEMONS} 
-                element={
-                <PrivateRoute>
-                    <PokemonsPageContainer />
-                </PrivateRoute>
-                }
-            />
-            <Route path={ROUTE_NAMES.HOME} element={<div>Home</div>} />
-            <Route path={ROUTE_NAMES.ASYNC} element={<AsyncPage />} />
-        </Routes>
-    )
-}
+  return (
+    <Routes>
+      <Route path={ROUTE_NAMES.LOGIN} element={<LoginContainer />} />
+      <Route path={ROUTE_NAMES.SIGNUP} element={<SignUpContainer />} />
+      <Route
+        path={ROUTE_NAMES.POKEMONS}
+        element={
+          <PrivateRoute>
+            <PokemonsPageContainer />
+          </PrivateRoute>
+        }
+      />
+      <Route path={ROUTE_NAMES.HOME} />
+      <Route path={ROUTE_NAMES.ASYNC} element={<AsyncPage />} />
+    </Routes>
+  );
+};

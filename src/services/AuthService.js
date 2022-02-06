@@ -20,7 +20,21 @@ class AuthService {
       gender,
       phone,
     };
-    return api.post("auth/signUp", signData);
+    return api
+      .post("auth/signUp", signData)
+      .then((response) => {
+        console.log("success");
+        return response;
+      })
+      .catch((error) => {
+        console.log(error.error.message);
+        throw new Error(error);
+      });
+  }
+
+  signOut() {
+    localStorage.clear();
+    window.location.reload();
   }
 }
 

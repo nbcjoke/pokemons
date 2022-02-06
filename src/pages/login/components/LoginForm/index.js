@@ -1,8 +1,20 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, IconButton } from "@material-ui/core";
+import { Key } from "@mui/icons-material";
 
 const LoginForm = ({ formData, handleFormChange, handleSubmit, errors }) => {
+  const [inputType, setInputType] = useState("password");
+
+  const changeInputTypeHandler = () => {
+    if (inputType === "password") {
+      setInputType("text");
+    } else {
+      setInputType("password");
+    }
+  };
+
   return (
     <div
       style={{
@@ -20,32 +32,39 @@ const LoginForm = ({ formData, handleFormChange, handleSubmit, errors }) => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          gap: 20,
+          gap: 15,
         }}
       >
         <TextField
-          required
-          label="email"
+          error={errors?.email}
+          label="email*"
           variant="outlined"
           type="email"
           value={formData.email}
           onChange={handleFormChange}
+          helperText={(errors?.email || [])[0]}
           name="email"
         />
-        <TextField
-          required
-          label="password"
-          variant="outlined"
-          type="password"
-          value={formData.password}
-          onChange={handleFormChange}
-          name="password"
-        />
+        <div style={{ position: "relative" }}>
+          <TextField
+            label="password"
+            variant="outlined"
+            type={inputType}
+            value={formData.password}
+            onChange={handleFormChange}
+            name="password"
+            error={errors?.password}
+            helperText={(errors?.password || [])[0]}
+          />
+          <div style={{ position: "absolute", top: "5px", right: "5px" }}>
+            <IconButton onClick={changeInputTypeHandler}>
+              <Key />
+            </IconButton>
+          </div>
+        </div>
         <Button type="submit" variant="outlined">
           Login
         </Button>
-
-        {errors && <p>{errors}</p>}
       </form>
     </div>
   );

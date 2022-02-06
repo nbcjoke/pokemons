@@ -1,13 +1,13 @@
 import * as actions from "../actions";
 import { handleActions } from "redux-actions";
-import { LOCAL_STORAGE_KEYS } from "../../../constants/localStorageKeys";
 
 const defaultState = {
   isLoading: false,
   error: null,
   userData: {},
-  // isAuth: false,
+  isRegister: false,
   accessToken: null,
+  success: false,
 };
 
 export const signUpReducer = handleActions(
@@ -16,19 +16,18 @@ export const signUpReducer = handleActions(
       ...state,
       isLoading: true,
       error: null,
+      success: null,
     }),
     [actions.SIGN_UP_SUCCESS]: (state, { payload }) => {
-      console.log(payload);
       const { accessToken, ...userData } = payload.response;
-
-      localStorage.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, accessToken);
 
       return {
         ...state,
         isLoading: false,
-        // isAuth: true,
+        isRegister: true,
         userData,
         accessToken,
+        success: true,
       };
     },
     [actions.SIGN_UP_FAIL]: (state, { payload }) => ({
