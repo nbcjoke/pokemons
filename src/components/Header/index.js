@@ -10,39 +10,37 @@ import { LoginContainer } from "../../pages/login/containers/LoginContainer";
 
 import { AccountCircle, ShoppingCart } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+
 import "./Header.css";
+import logo from "../../static/images/logo.svg";
 
 const Header = () => {
   const { isAuth } = useSelector(authSelector);
-
-  const navigationItems = useMemo(() => {
-    const targetNavigationItems = isAuth ? "PRIVATE" : "PUBLIC";
-
-    return NAVIGATION[targetNavigationItems];
-  }, [isAuth]);
 
   return (
     <>
       <div className="header__wrapper">
         <div className="header__wrapper-logo">
-          <h1>Logo</h1>
+          <a href="#">
+            <img alt="logo" className="logo" src={logo}></img>
+          </a>
         </div>
         <div className="nav__wrapper">
           <ul className="nav__wrapper-menu">
             <li className="nav__wrapper-list">
-              <a href="#" className="nav__wrapper-link">
+              <NavLink className="nav__wrapper-link" to="../blog">
                 Blog
-              </a>
+              </NavLink>
             </li>
             <li className="nav__wrapper-list">
-              <a href="#" className="nav__wrapper-link">
+              <NavLink className="nav__wrapper-link" to="../products">
                 Products
-              </a>
+              </NavLink>
             </li>
             <li className="nav__wrapper-list">
-              <a href="#" className="nav__wrapper-link">
+              <NavLink className="nav__wrapper-link" to="../contact">
                 Contact us
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -67,7 +65,9 @@ const Header = () => {
             <>
               <LoginContainer />
               <Button key="Sign Up" variant="outlined">
-                <NavLink to="../signup">Sign up</NavLink>
+                <NavLink className="header__wrapper-signUp" to="../signup">
+                  Sign up
+                </NavLink>
               </Button>
             </>
           )}

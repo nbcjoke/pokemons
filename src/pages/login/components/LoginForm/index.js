@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import { TextField, Button, IconButton } from "@material-ui/core";
+import { TextField, Button, IconButton } from "@mui/material";
 import { Key } from "@mui/icons-material";
 
 const LoginForm = ({ formData, handleFormChange, handleSubmit, errors }) => {
@@ -55,9 +55,9 @@ const LoginForm = ({ formData, handleFormChange, handleSubmit, errors }) => {
             error={errors?.password}
             helperText={(errors?.password || [])[0]}
           />
-          <div style={{ position: "absolute", top: "5px", right: "5px" }}>
+          <div style={{ position: "absolute", top: "9px", right: "5px" }}>
             <IconButton onClick={changeInputTypeHandler}>
-              <Key />
+              <Key color="primary" />
             </IconButton>
           </div>
         </div>

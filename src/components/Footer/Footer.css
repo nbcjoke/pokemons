@@ -1,19 +1,5 @@
-.footer__info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-  height: 150px;
-  background-color: #6f1eaa;
-}
-
-.image {
-  height: 100%;
-  width: 100%;
-}
-
 .footer__content {
-  background-color: #eee;
+  background-color: #000;
   padding: 50px 250px;
   margin-top: 131px;
 }
@@ -31,9 +17,13 @@
 
 .a {
   text-decoration: none;
-  color: #000;
+  color: #fff;
   margin-bottom: 6px;
   font-family: "Roboto", sans-serif;
+}
+
+.a:hover {
+  color: #a88b65;
 }
 
 .footer__content-title {
@@ -76,8 +66,9 @@
 
 .footer__content-block {
   display: flex;
-  color: #000;
+  color: #fff;
   margin-top: 70px;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -85,7 +76,7 @@
   width: 135px;
   font-size: 14px;
   line-height: 18px;
-  color: #000;
+  color: #fff;
   margin-top: 15px;
   font-family: "Roboto", sans-serif;
 }

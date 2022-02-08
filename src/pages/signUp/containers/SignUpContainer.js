@@ -16,11 +16,13 @@ export const SignUpContainer = () => {
   const dispatch = useDispatch();
 
   const [errors, setErrors] = useState();
-  // const { success } = useSelector(registerSelector);
+  const { success } = useSelector(registerSelector);
+  console.log(success);
 
   const handleLogin = () => {
     dispatch(OPEN_MODAL());
   };
+
   const { formValues, handleChange } = useForm({
     email: "",
     password: "",
@@ -74,7 +76,7 @@ export const SignUpContainer = () => {
       handleFormChange={handleChange}
       errors={errors}
       handleLogin={handleLogin}
-      // success={success}
+      success={success}
     />
   );
 };
