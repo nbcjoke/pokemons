@@ -1,0 +1,62 @@
+.header__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  padding: 20px;
+  background-color: #eee;
+}
+
+.header__wrapper-logo {
+  margin-left: 50px;
+}
+
+.nav__wrapper-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__wrapper {
+  margin-left: 400px;
+}
+
+.nav__wrapper-list {
+  list-style: none;
+  width: 120px;
+  font-size: 20px;
+}
+
+.nav__wrapper-list:hover {
+  font-size: 24px;
+  transition: all 0.5s ease;
+}
+
+.nav__wrapper-link {
+  text-decoration: none;
+  color: black;
+}
+
+.nav__wrapper-link:hover {
+  color: #3f51b5;
+}
+
+.header__wrapper-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+}
+
+.MuiButton-root > a {
+  text-decoration: none;
+  color: #3f51b5;
+}
+
+.header__wrapper-buttons {
+  display: flex;
+  gap: 10px;
+}

@@ -1,0 +1,41 @@
+.signUpWrapper {
+  padding: 40px;
+  border: 1px solid gray;
+  width: 450px;
+  margin: 115px auto;
+  border-radius: 15px;
+}
+
+.MuiOutlinedInput-root > input {
+  width: 415px;
+}
+
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+  width: 400px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.account {
+  margin: 20px 0 4px 220px;
+}
+
+.LogInLink {
+  text-decoration: none;
+  color: #3f51b5;
+  margin-left: 5px;
+}
+
+/* .css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
+  width: 210px;
+} */
+
+.signUpButton {
+  width: 150px;
+}
