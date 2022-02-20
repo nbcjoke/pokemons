@@ -3,15 +3,20 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { GET_POKEMON_DETAILS_REQUEST } from "../actions";
 import { pokemonDetailsSelector } from "../selectors";
+import { PokemonDetailsLayout } from "../components/PokemonDetailsLayout";
 
 export const PokemonDetailsContainer = () => {
   const dispatch = useDispatch();
-  const { pokemonName } = useParams();
+  const { pokemonId } = useParams();
 
   const { info, isLoading } = useSelector(pokemonDetailsSelector);
 
   useEffect(() => {
-    dispatch(GET_POKEMON_DETAILS_REQUEST(pokemonName));
+    dispatch(GET_POKEMON_DETAILS_REQUEST(pokemonId));
   }, []);
-  return <div>{isLoading ? "loading..." : <h1>{info.name}</h1>}</div>;
+  return (
+    <>
+      <PokemonDetailsLayout info={info} isLoading={isLoading} />
+    </>
+  );
 };

@@ -4,5 +4,5 @@ export const ROUTE_NAMES = {
   ASYNC: "/async",
   LOGIN: "login",
   SIGNUP: "/signup",
-  POKEMONS_DETAIL: "/pokemons/pokemonName",
+  POKEMONS_DETAIL: "/products/:pokemonId",
 };

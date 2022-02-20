@@ -5,6 +5,11 @@
   height: 60px;
   padding: 20px;
   background-color: #000;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  box-shadow: 0 -7px 15px 1px #fff;
 }
 
 .header__wrapper-logo {
@@ -49,7 +54,7 @@
   justify-content: center;
   align-items: center;
   gap: 15px;
-  margin-left: auto;
+  margin: 0 50px 0 auto;
 }
 
 .MuiButton-root > a {

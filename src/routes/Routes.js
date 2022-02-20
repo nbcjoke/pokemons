@@ -28,7 +28,6 @@ export const Router = () => {
         }
       />
       <Route path={ROUTE_NAMES.HOME} />
-      <Route path={ROUTE_NAMES.ASYNC} element={<AsyncPage />} />
       <Route
         path={ROUTE_NAMES.POKEMONS_DETAIL}
         element={<PokemonDetailsContainer />}
