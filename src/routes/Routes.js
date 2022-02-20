@@ -4,6 +4,7 @@ import { PokemonsPageContainer } from "../pages/Pokemons/containers/PokemonsPage
 import { AsyncPage } from "../pages/Async";
 import { LoginContainer } from "../pages/login/containers/LoginContainer";
 import { SignUpContainer } from "../pages/signUp/containers/SignUpContainer";
+import { PokemonDetailsContainer } from "../pages/PokemonDetails/containers/PokemonDetailsContainer";
 
 import { PrivateRoute } from "./PrivateRoute";
 import { ROUTE_NAMES } from "./routeNames";
@@ -27,7 +28,10 @@ export const Router = () => {
         }
       />
       <Route path={ROUTE_NAMES.HOME} />
-      <Route path={ROUTE_NAMES.ASYNC} element={<AsyncPage />} />
+      <Route
+        path={ROUTE_NAMES.POKEMONS_DETAIL}
+        element={<PokemonDetailsContainer />}
+      />
     </Routes>
   );
 };

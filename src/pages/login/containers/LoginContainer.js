@@ -65,7 +65,7 @@ export const LoginContainer = () => {
       </Button>
       <Dialog open={isOpened} onClose={handleClose}>
         <DialogTitle>Log In</DialogTitle>
-        <DialogContent>
+        <DialogContent style={{ padding: "20px 40px" }}>
           <LoginForm
             formData={formValues}
             errors={errors}

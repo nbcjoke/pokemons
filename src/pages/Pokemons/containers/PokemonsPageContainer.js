@@ -1,26 +1,27 @@
 import { useDispatch, useSelector } from "react-redux";
 import { pokemonPageSelector } from "../selectors";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { GET_POKEMONS_REQUEST } from "../actions";
-import { ROUTE_NAMES } from "../../../routes/routeNames";
 
+import { PokemonsLayout } from "../components/PokemonsLayout";
+import { usePagination } from "../../../hooks";
+
+import { GET_POKEMONS_REQUEST } from "../actions";
 
 export const PokemonsPageContainer = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const [page, handlePageChange] = usePagination("pokemonsPage");
 
-    const { isLoading, errors, pokemonsList } = useSelector(pokemonPageSelector);
+  const { isLoading, errors, pokemonsList } = useSelector(pokemonPageSelector);
 
-    useEffect(() => {
-        dispatch(GET_POKEMONS_REQUEST());
-    }, []);
-    return (
-        <div>
-        {pokemonsList.map(({ id, name }) => (
-            <Link key={name} to={`${ROUTE_NAMES.POKEMONS}/${id}`}>
-                <div>{name}</div>
-            </Link>
-        ))}
-    </div>
-    );
+  useEffect(() => {
+    dispatch(GET_POKEMONS_REQUEST(page));
+  }, [page]);
+
+  return (
+    <PokemonsLayout
+      pokemonsList={pokemonsList}
+      page={page}
+      handlePageChange={handlePageChange}
+    />
+  );
 };

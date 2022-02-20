@@ -23,7 +23,7 @@ const SignUpForm = ({
   handleFormChange,
   handleSubmit,
   errors,
-  handleLogIn,
+  handleLogin,
   success,
 }) => {
   const [inputType, setInputType] = useState("password");
@@ -38,12 +38,12 @@ const SignUpForm = ({
 
   return (
     <div className="signUpWrapper">
-      <Typography variant="h5" component="h2">
+      <Typography className="signUp-title" variant="h5" component="h2">
         Sign up
       </Typography>
       <p className="account">
-        Already have an account?{" "}
-        <a className="LogInLink" onClick={handleLogIn}>
+        Already have an account?
+        <a className="LogInLink" onClick={handleLogin}>
           Log in
         </a>
       </p>
@@ -69,7 +69,7 @@ const SignUpForm = ({
             error={errors?.password}
             helperText={(errors?.password || [])[0]}
           />
-          <div style={{ position: "absolute", top: "5px", right: "5px" }}>
+          <div style={{ position: "absolute", top: "9px", right: "5px" }}>
             <IconButton onClick={changeInputTypeHandler}>
               <Key color="primary" />
             </IconButton>

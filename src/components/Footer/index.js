@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 import "./Footer.css";
 
 export function Footer() {
@@ -7,15 +9,15 @@ export function Footer() {
         <div className="content-block">
           <div className="footer__content-links">
             <div className="footer__content-title">Quick Links</div>
-            <a href="" className="a">
+            <NavLink className="a" to="../blog">
               Blog
-            </a>
-            <a href="" className="a">
+            </NavLink>
+            <NavLink className="a" to="../products">
               Products
-            </a>
-            <a href="" className="a">
+            </NavLink>
+            <NavLink className="a" to="../contact">
               Contact
-            </a>
+            </NavLink>
           </div>
           <div className="footer__content-message">
             <div className="footer__content-title">Call or Text</div>

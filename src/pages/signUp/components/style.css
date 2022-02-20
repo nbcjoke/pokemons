@@ -10,8 +10,8 @@
   width: 415px;
 }
 
-.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
-  width: 400px;
+.MuiFormControl-root {
+  width: 442px;
 }
 
 .form {
@@ -22,19 +22,20 @@
   gap: 20px;
 }
 
+.signUp-title {
+  color: #b8b8b8;
+}
+
 .account {
   margin: 20px 0 4px 220px;
+  color: #b8b8b8;
 }
 
 .LogInLink {
   text-decoration: none;
-  color: #3f51b5;
+  color: #9dd2ff;
   margin-left: 5px;
 }
-
-/* .css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
-  width: 210px;
-} */
 
 .signUpButton {
   width: 150px;

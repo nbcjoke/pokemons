@@ -1,7 +1,8 @@
 export const ROUTE_NAMES = {
-    HOME: '/',
-    POKEMONS: '/pokemons',
-    ASYNC: '/async',
-    LOGIN: 'login',
-    SIGNUP: '/signup',
-}
+  HOME: "/",
+  POKEMONS: "/products",
+  ASYNC: "/async",
+  LOGIN: "login",
+  SIGNUP: "/signup",
+  POKEMONS_DETAIL: "/products/:pokemonId",
+};
