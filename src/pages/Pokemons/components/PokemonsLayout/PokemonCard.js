@@ -7,21 +7,21 @@ import { FormatValues } from "../../../../utils/formatValues";
 
 import styles from "./style.module.css";
 
-export const PokemonCard = ({ pokemonsList }) => {
+export const PokemonCard = ({ pokemonsList, addItemToCart }) => {
   return (
     <div>
       <div className={styles.products__wrapper}>
-        {pokemonsList.map(({ id, name, price, image }) => (
+        {pokemonsList.map((pokemon) => (
           <Box className={styles.card__wrapper}>
             <Box sx={{ my: 3, mx: 2 }}>
               <Grid container alignItems="center">
                 <Grid item xs>
                   <Link
                     className={styles["card__wrapper-link"]}
-                    key={name}
-                    to={`${ROUTE_NAMES.POKEMONS}/${id}`}
+                    key={pokemon.name}
+                    to={`${ROUTE_NAMES.POKEMONS}/${pokemon.id}`}
                   >
-                    <Typography variant="h6">{name}</Typography>
+                    <Typography variant="h6">{pokemon.name}</Typography>
                   </Link>
                 </Grid>
                 <Grid item>
@@ -31,7 +31,7 @@ export const PokemonCard = ({ pokemonsList }) => {
                     variant="h6"
                     component="div"
                   >
-                    <FormatValues price={price} />
+                    <FormatValues price={pokemon.price} />
                   </Typography>
                 </Grid>
               </Grid>
@@ -44,13 +44,26 @@ export const PokemonCard = ({ pokemonsList }) => {
               </Typography>
             </Box>
             <Grid className={styles["card__wrapper-image"]}>
-              <img alt="pokemons" src={image}></img>
+              <img
+                className={styles.card__image}
+                alt="pokemon"
+                src={pokemon.image}
+              ></img>
             </Grid>
             <Box className={styles["card__wrapper-buttons"]}>
               <Button color="primary" variant="outlined">
                 Buy
               </Button>
-              <IconButton>
+              <IconButton
+                onClick={() =>
+                  addItemToCart({
+                    id: pokemon.id,
+                    name: pokemon.name,
+                    image: pokemon.image,
+                    price: pokemon.price,
+                  })
+                }
+              >
                 <ShoppingCart color="primary" />
               </IconButton>
             </Box>

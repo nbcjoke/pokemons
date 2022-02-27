@@ -5,7 +5,12 @@ import { Pagination } from "../../../../components/Pagination";
 
 import styles from "./style.module.css";
 
-export const PokemonsLayout = ({ pokemonsList, page, handlePageChange }) => {
+export const PokemonsLayout = ({
+  pokemonsList,
+  page,
+  handlePageChange,
+  addItemToCart,
+}) => {
   return (
     <div>
       <div className={styles["products__wrapper-title"]}>
@@ -18,7 +23,7 @@ export const PokemonsLayout = ({ pokemonsList, page, handlePageChange }) => {
           On this page u can choose and buy our products
         </Typography>
       </div>
-      <PokemonCard pokemonsList={pokemonsList} />
+      <PokemonCard pokemonsList={pokemonsList} addItemToCart={addItemToCart} />
       <div className={styles["products__wrapper-pagination"]}>
         <Pagination currentPage={page} onPageChange={handlePageChange} />
       </div>

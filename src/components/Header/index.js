@@ -1,20 +1,20 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { useMemo } from "react";
+import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 import { authSelector } from "../../pages/login/selectors";
-import { NAVIGATION } from "./config";
-import { Button } from "@mui/material";
+import { CartSelector } from "../../pages/cart/selectors";
+
+import { Button, Badge, IconButton, TextField } from "@mui/material";
 import AuthService from "../../services/AuthService";
 import { LoginContainer } from "../../pages/login/containers/LoginContainer";
-
 import { AccountCircle, ShoppingCart } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
 
 import "./Header.css";
 import logo from "../../static/images/logo.svg";
 
 const Header = () => {
+  const { quantity } = useSelector(CartSelector);
   const { isAuth } = useSelector(authSelector);
 
   return (
@@ -54,9 +54,13 @@ const Header = () => {
               >
                 Logout
               </Button>
-              <IconButton>
-                <ShoppingCart color="primary" />
-              </IconButton>
+              <NavLink to="../cart">
+                <Badge badgeContent={quantity} color="primary">
+                  <IconButton to="../cart">
+                    <ShoppingCart color="primary" />
+                  </IconButton>
+                </Badge>
+              </NavLink>
               <IconButton>
                 <AccountCircle color="primary" />
               </IconButton>
