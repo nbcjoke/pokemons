@@ -2,7 +2,6 @@ import {
   Typography,
   IconButton,
   Box,
-  Grid,
   Button,
   Divider,
   SvgIcon,
@@ -52,7 +51,8 @@ const STATS_ICONS = {
   },
 };
 
-export const PokemonDetailsLayout = ({ isLoading, info }) => {
+export const PokemonDetailsLayout = ({ isLoading, info, addItemToCart }) => {
+  console.log(info);
   return (
     <>
       {isLoading ? (
@@ -97,54 +97,20 @@ export const PokemonDetailsLayout = ({ isLoading, info }) => {
               </Typography>
             </div>
           </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <div
-              style={{
-                borderRadius: "4px",
-                backgroundColor: "#000",
-                padding: "35px",
-                // boxShadow: "0 0 20px 5px #686868"
-              }}
-            >
-              <h1
-                style={{
-                  color: "#fff",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                {info.name}
-              </h1>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-around",
-                  gap: "30px",
-                  marginBottom: "45px",
-                }}
-              >
-                <div style={{ marginTop: "10px" }}>
+          <div className={styles.wrapper__details}>
+            <div className={styles.details}>
+              <h1 className={styles.name}>{info.name}</h1>
+              <div className={styles.wrapper__info}>
+                <div className={styles.wrapper__img}>
                   <img
-                    style={{ width: "200%" }}
+                    className={styles.img}
                     alt="product"
                     src={info.image}
                   ></img>
                 </div>
-                <div style={{ color: "#fff" }}>
+                <div className={styles.wrapper__stats}>
                   {info.stats?.map((stat) => (
-                    <div
-                      key={stat.title}
-                      style={{
-                        display: "flex",
-                        gap: "20px",
-                        marginTop: "10px",
-                      }}
-                    >
+                    <div key={stat.title} className={styles.stats}>
                       <Tooltip
                         title={STATS_ICONS[stat.title]?.toolTip}
                         placement="left"
@@ -154,52 +120,19 @@ export const PokemonDetailsLayout = ({ isLoading, info }) => {
                           color={STATS_ICONS[stat.title]?.color}
                         />
                       </Tooltip>
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        {stat.value}
-                      </div>
+                      <div className={styles.wrapper__value}>{stat.value}</div>
                     </div>
                   ))}
                 </div>
               </div>
-              <h2
-                style={{
-                  color: "#fff",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                Abilities
-              </h2>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: "30px",
-                  padding: "20px",
-                  marginBottom: "20px",
-                }}
-              >
-                <div
-                  style={{
-                    color: "#9dd2ff",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "46px",
-                  }}
-                >
+              <h2 className={styles.abilities__title}>Abilities</h2>
+              <div className={styles.wrapper__abilities}>
+                <div className={styles.wrapper__title}>
                   {info.abilities?.map((abilitie) => (
                     <div>{abilitie.title}</div>
                   ))}
                 </div>
-                <div
-                  style={{
-                    color: "#fff",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "30px",
-                    maxWidth: "480px",
-                  }}
-                >
+                <div className={styles.abilitie}>
                   {info.abilities?.map((abilitie) => (
                     <div>{abilitie.description}</div>
                   ))}
@@ -211,22 +144,24 @@ export const PokemonDetailsLayout = ({ isLoading, info }) => {
                   justifyContent: "space-between",
                 }}
               >
-                <div style={{ display: "flex", gap: "20px" }}>
+                <div className={styles.wrapper__buttons}>
                   <Button color="primary" variant="outlined">
                     Buy
                   </Button>
-                  <IconButton>
+                  <IconButton
+                    onClick={() =>
+                      addItemToCart({
+                        id: info.id,
+                        name: info.name,
+                        image: info.image,
+                        price: info.price,
+                      })
+                    }
+                  >
                     <ShoppingCart color="primary" />
                   </IconButton>
                 </div>
-                <div
-                  style={{
-                    color: "#fff",
-                    display: "flex",
-                    alignItems: "center",
-                    fontSize: "20px",
-                  }}
-                >
+                <div className={styles.wrappper__price}>
                   <FormatValues price={info.price} />
                 </div>
               </Box>

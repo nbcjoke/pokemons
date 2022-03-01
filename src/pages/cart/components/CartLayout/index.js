@@ -13,24 +13,17 @@ export const CartLayout = ({
 }) => {
   return (
     <div>
-      <div style={{ margin: "180px 0 20px", color: "#fff" }}>
+      <div className={styles.wrapper__title}>
         <Divider variant="fullWidth">
           <Typography variant="h4">Cart</Typography>
         </Divider>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          margin: "0 auto 60px",
-          color: "#fff",
-        }}
-      >
+      <div className={styles.wrapper__description}>
         <Typography variant="h6">
           On this page u can choose amount and buy our products
         </Typography>
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div className={styles.cart__container}>
         <CartItem
           items={items}
           removeItemFromCart={removeItemFromCart}
@@ -38,23 +31,10 @@ export const CartLayout = ({
           totalPrice={totalPrice}
           quantity={quantity}
         />
-        <div
-          style={{
-            padding: "40px",
-            marginTop: "40px",
-            borderRadius: "4px",
-            backgroundColor: "#000",
-            maxHeight: "234px",
-            position: "sticky",
-            top: "120px",
-          }}
-        >
+        <div className={styles.info__block}>
           <h1>{`Total Price: ${totalPrice}$`}</h1>
           <h1>{`Quantity: ${quantity}`}</h1>
-          <Button
-            style={{ display: "flex", margin: "90px auto 0" }}
-            variant="outlined"
-          >
+          <Button className={styles.block__button} variant="outlined">
             Buy
           </Button>
         </div>

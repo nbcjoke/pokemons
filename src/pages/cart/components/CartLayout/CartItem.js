@@ -1,34 +1,16 @@
-import { Link } from "react-router-dom";
-
-import {
-  Typography,
-  IconButton,
-  Box,
-  Grid,
-  Button,
-  TextField,
-} from "@mui/material";
+import { Typography, IconButton, Box, Grid } from "@mui/material";
 import { FormatValues } from "../../../../utils/formatValues";
 import { Delete } from "@mui/icons-material";
 import { ItemCounterContainer } from "../../containers/ItemCounterContainer";
 
 import styles from "./style.module.css";
 
-export const CartItem = ({ items, removeItemFromCart, updateCartItem }) => {
+export const CartItem = ({ items, removeItemFromCart }) => {
   return (
-    <div
-      style={{ display: "flex", justifyContent: "flex-start", padding: "40px" }}
-    >
-      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+    <div className={styles.wrapper__cart}>
+      <div className={styles.cart}>
         {items.map((pokemon) => (
-          <Box
-            style={{
-              width: "800px",
-              borderRadius: "4px",
-              padding: "0 10px",
-              backgroundColor: "#000",
-            }}
-          >
+          <Box className={styles.cart__wrapper}>
             <Box sx={{ my: 3, mx: 2 }}>
               <Grid container alignItems="center">
                 <Grid item xs>
@@ -46,7 +28,7 @@ export const CartItem = ({ items, removeItemFromCart, updateCartItem }) => {
                 </Grid>
               </Grid>
             </Box>
-            <Grid style={{ display: "flex", justifyContent: "space-between" }}>
+            <Grid className={styles.wrapper__counter}>
               <img
                 className={styles.card__image}
                 alt="pokemons"
@@ -59,13 +41,7 @@ export const CartItem = ({ items, removeItemFromCart, updateCartItem }) => {
                 />
               </div>
 
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginRight: "15px",
-                }}
-              >
+              <div className={styles.wrapper__button}>
                 <IconButton onClick={() => removeItemFromCart(pokemon.id)}>
                   <Delete color="primary" />
                 </IconButton>

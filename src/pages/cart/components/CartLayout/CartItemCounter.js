@@ -1,5 +1,7 @@
 import { Button, TextField } from "@mui/material";
 
+import styles from "./style.module.css";
+
 export const CartItemCounter = ({
   itemQuantity,
   handleQuantityOnChange,
@@ -7,16 +9,9 @@ export const CartItemCounter = ({
   handleItemQuantityIncrement,
 }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "230px",
-      }}
-    >
+    <div className={styles.wrapper__buttons}>
       <Button
-        style={{ height: "56px" }}
+        className={styles.buttons}
         onClick={handleItemQuantityDecrement}
         disabled={itemQuantity <= 1}
         variant="outlined"
@@ -32,7 +27,7 @@ export const CartItemCounter = ({
         variant="outlined"
       ></TextField>
       <Button
-        style={{ height: "56px" }}
+        className={styles.buttons}
         onClick={handleItemQuantityIncrement}
         variant="outlined"
         color="primary"
