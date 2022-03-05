@@ -2,10 +2,12 @@ import * as actions from "../actions";
 import { handleActions } from "redux-actions";
 import { LOCAL_STORAGE_KEYS } from "../../../constants/localStorageKeys";
 
+const storedUserData = localStorage.getItem(LOCAL_STORAGE_KEYS.USER_DATA);
+
 const defaultState = {
   isLoading: false,
   error: null,
-  userData: {},
+  userData: storedUserData ? JSON.parse(storedUserData) : {},
   isAuth: localStorage.getItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN),
   accessToken: null,
   isOpened: false,
@@ -23,6 +25,10 @@ export const authReducer = handleActions(
       const { accessToken, ...userData } = payload.response;
 
       localStorage.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, accessToken);
+      localStorage.setItem(
+        LOCAL_STORAGE_KEYS.USER_DATA,
+        JSON.stringify(userData)
+      );
 
       return {
         ...state,

@@ -18,6 +18,11 @@ import {
 import { FormatValues } from "../../../../utils/formatValues";
 import styles from "./style.module.css";
 
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 const STATS_ICONS = {
   hp: {
     icon: FavoriteBorder,
@@ -126,6 +131,52 @@ export const PokemonDetailsLayout = ({ isLoading, info, addItemToCart }) => {
                 </div>
               </div>
               <h2 className={styles.abilities__title}>Abilities</h2>
+
+              <div>
+                {info.abilitie?.map((abilitie) => (
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                    >
+                      <Typography>
+                        {info.abilities?.map((abilitie) => (
+                          <div>{abilitie.title}</div>
+                        ))}
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>
+                        {info.abilities?.map((abilitie) => (
+                          <div>{abilitie.description}</div>
+                        ))}
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                ))}
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <Typography>
+                      {info.abilities?.map((abilitie) => (
+                        <div>{abilitie.title}</div>
+                      ))}
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>
+                      {info.abilities?.map((abilitie) => (
+                        <div>{abilitie.description}</div>
+                      ))}
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+
               <div className={styles.wrapper__abilities}>
                 <div className={styles.wrapper__title}>
                   {info.abilities?.map((abilitie) => (

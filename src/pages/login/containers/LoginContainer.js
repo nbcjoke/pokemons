@@ -49,8 +49,9 @@ export const LoginContainer = () => {
     }
   };
 
-  const { isAuth, isOpened } = useSelector(authSelector);
+  const { isAuth, isOpened, userData } = useSelector(authSelector);
   const navigate = useNavigate();
+  console.log(userData);
 
   useEffect(() => {
     if (isAuth) {

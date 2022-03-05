@@ -4,12 +4,13 @@ import { PokemonsPageContainer } from "../pages/Pokemons/containers/PokemonsPage
 import { LoginContainer } from "../pages/login/containers/LoginContainer";
 import { SignUpContainer } from "../pages/signUp/containers/SignUpContainer";
 import { PokemonDetailsContainer } from "../pages/PokemonDetails/containers/PokemonDetailsContainer";
+import { CartPageContainer } from "../pages/cart/containers/CartPageContainer";
+import { ProfilePageContainer } from "../pages/profile/containers/ProfilePageContainer";
 
 import { PrivateRoute } from "./PrivateRoute";
 import { ROUTE_NAMES } from "./routeNames";
 import { setNavigator } from "../services/NavigationService";
 import { useNavigate } from "react-router-dom";
-import { CartPageContainer } from "../pages/cart/containers/CartPageContainer";
 
 export const Router = () => {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ export const Router = () => {
         element={<PokemonDetailsContainer />}
       />
       <Route path={ROUTE_NAMES.CART} element={<CartPageContainer />} />
+      <Route path={ROUTE_NAMES.PROFILE} element={<ProfilePageContainer />} />
     </Routes>
   );
 };

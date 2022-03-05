@@ -56,14 +56,16 @@ const Header = () => {
               </Button>
               <NavLink to="../cart">
                 <Badge badgeContent={quantity} color="primary">
-                  <IconButton to="../cart">
+                  <IconButton>
                     <ShoppingCart color="primary" />
                   </IconButton>
                 </Badge>
               </NavLink>
-              <IconButton>
-                <AccountCircle color="primary" />
-              </IconButton>
+              <NavLink to="../profile">
+                <IconButton>
+                  <AccountCircle color="primary" />
+                </IconButton>
+              </NavLink>
             </div>
           ) : (
             <>
