@@ -43,14 +43,6 @@ export function Footer() {
             <p>2223 Federal Ave Los Angeles, CA 90064</p>
             <p>Mon-Sat 9am - 7pm PT Sun 9am - 1pm PT</p>
           </div>
-          <div className="footer__content-social">
-            <div className="footer__content-title">Social</div>
-            {/* <img src={insta} alt="" className="footer__content-img"></img>
-            <img src={facebook} alt="" className="footer__content-img"></img>
-            <img src={twitter} alt="" className="footer__content-img"></img>
-            <img src={xz} alt="" className="footer__content-img"></img>
-            <img src={google} alt="" className="footer__content-img"></img> */}
-          </div>
         </div>
         <div className="footer__content-block">
           <div className="footer__content-year">2022 Pokelab, Inc.</div>

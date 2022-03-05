@@ -32,7 +32,6 @@ export const SignUpContainer = () => {
     gender: "",
     passwordConfirm: "",
   });
-
   const handleSignUp = async (event) => {
     console.log(event);
     event.preventDefault();

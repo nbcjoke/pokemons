@@ -80,7 +80,7 @@
   margin-top: 15px;
   font-family: "Roboto", sans-serif;
 }
-/* 
+
 @media screen and (min-width: 1280px) and (max-width: 1700px) {
   .content-block {
     gap: 80px;
@@ -132,4 +132,4 @@
     gap: 15px;
     flex-direction: column;
   }
-} */
+}
